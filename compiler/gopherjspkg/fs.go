@@ -1,6 +1,6 @@
 // +build gopherjsdev
 
-package natives
+package gopherjspkg
 
 import (
 	"go/build"
@@ -12,11 +12,13 @@ import (
 	"github.com/shurcooL/httpfs/filter"
 )
 
-// FS is a virtual filesystem that contains native packages.
+// FS is a virtual filesystem that contains core GopherJS packages.
 var FS = filter.Keep(
-	http.Dir(importPathToDir("github.com/gopherjs/gopherjs/compiler/natives")),
+	http.Dir(importPathToDir("github.com/gopherjs/gopherjs")),
 	func(path string, fi os.FileInfo) bool {
-		return path == "/" || path == "/src" || strings.HasPrefix(path, "/src/")
+		return path == "/" ||
+			path == "/js" || strings.HasPrefix(path, "/js/") ||
+			path == "/nosync" || strings.HasPrefix(path, "/nosync/")
 	},
 )
 
