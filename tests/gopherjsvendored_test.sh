@@ -27,14 +27,12 @@ mkdir -p "$tmp/src/example.org/hello/vendor/github.com/gopherjs" \
          "$tmp/src/example.org/hello/vendor/github.com/fsnotify" \
          "$tmp/src/example.org/hello/vendor/github.com/kisielk" \
          "$tmp/src/example.org/hello/vendor/github.com/neelance" \
-         "$tmp/src/example.org/hello/vendor/github.com/shurcooL" \
          "$tmp/src/example.org/hello/vendor/github.com/spf13" \
          "$tmp/src/example.org/hello/vendor/golang.org/x"
 cp -r $(go list -e -f '{{.Dir}}' github.com/gopherjs/gopherjs)  "$tmp/src/example.org/hello/vendor/github.com/gopherjs/gopherjs"
 cp -r $(go list -e -f '{{.Dir}}' github.com/fsnotify/fsnotify)  "$tmp/src/example.org/hello/vendor/github.com/fsnotify/fsnotify"
 cp -r $(go list -e -f '{{.Dir}}' github.com/kisielk/gotool)     "$tmp/src/example.org/hello/vendor/github.com/kisielk/gotool"
 cp -r $(go list -e -f '{{.Dir}}' github.com/neelance/sourcemap) "$tmp/src/example.org/hello/vendor/github.com/neelance/sourcemap"
-cp -r $(go list -e -f '{{.Dir}}' github.com/shurcooL/httpfs)    "$tmp/src/example.org/hello/vendor/github.com/shurcooL/httpfs"
 cp -r $(go list -e -f '{{.Dir}}' github.com/spf13/cobra)        "$tmp/src/example.org/hello/vendor/github.com/spf13/cobra"
 cp -r $(go list -e -f '{{.Dir}}' github.com/spf13/pflag)        "$tmp/src/example.org/hello/vendor/github.com/spf13/pflag"
 cp -r $(go list -e -f '{{.Dir}}' golang.org/x/crypto)           "$tmp/src/example.org/hello/vendor/golang.org/x/crypto"
