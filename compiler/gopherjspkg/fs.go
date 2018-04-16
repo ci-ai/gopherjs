@@ -7,7 +7,7 @@ import (
 	"log"
 	"net/http"
 	"os"
-	"strings"
+	pathpkg "path"
 
 	"github.com/shurcooL/httpfs/filter"
 )
@@ -17,8 +17,8 @@ var FS = filter.Keep(
 	http.Dir(importPathToDir("github.com/gopherjs/gopherjs")),
 	func(path string, fi os.FileInfo) bool {
 		return path == "/" ||
-			path == "/js" || strings.HasPrefix(path, "/js/") ||
-			path == "/nosync" || strings.HasPrefix(path, "/nosync/")
+			path == "/js" || (pathpkg.Dir(path) == "/js" && !fi.IsDir()) ||
+			path == "/nosync" || (pathpkg.Dir(path) == "/nosync" && !fi.IsDir())
 	},
 )
 
