@@ -33,7 +33,9 @@ func TestGopherJSCanBeVendored(t *testing.T) {
 		t.Skip("test meant to be run using normal Go compiler (needs os/exec)")
 	}
 
-	got, err := exec.Command("bash", "gopherjsvendored_test.sh").Output()
+	cmd := exec.Command("bash", "gopherjsvendored_test.sh")
+	cmd.Stderr = os.Stdout
+	got, err := cmd.Output()
 	if err != nil {
 		t.Fatal(err)
 	}
