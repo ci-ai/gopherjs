@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/sh
 # Don't run this file directly. It's executed as part of TestGopherJSCanBeVendored.
 
 set -e
@@ -10,7 +10,7 @@ cleanup() {
     exit
 }
 
-trap cleanup EXIT SIGHUP SIGINT SIGTERM
+trap cleanup EXIT HUP INT TERM
 
 # Make a hello project that will vendor GopherJS.
 mkdir -p "$tmp/src/example.org/hello"
